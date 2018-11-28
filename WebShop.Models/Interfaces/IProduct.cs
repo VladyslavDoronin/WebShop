@@ -15,7 +15,6 @@ namespace interfaces.Interfaces
         Dictionary<string, string> PaymentMethods { get; set; }  //ключ, характеристика
         Dictionary<string, string> Specifications { get; set; } //ключ, характеристика
         IEnumerable<string> Pic { get; set; }
-        //ISale SpecialOffer { get; set; }  //метод интерфейс акции
         IEnumerable<string> Categories { get; set; }  //список категорий, к которым он пренадлежит
         bool isActive { get; set; }
         DateTime CreateDate { get; set; }
