@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using interfaces;
-using interfaces.Classes;
-using interfaces.Interfaces;
+using WebShop;
+using WebShop.Classes;
+using WebShop.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebShop.Controllers
@@ -16,8 +16,12 @@ namespace WebShop.Controllers
             return View(new Catalog() {
                 ProductList = new List<IProduct>()
                 { new Product()
-                { Name = "Aspirin", Price = 3}
-                } });
+                { Name = "Aspirin", Price = 3},
+                new Product()
+                { Name = "Aspirin 2", Price = 309}
+                }
+
+            });
         }
     }
 }

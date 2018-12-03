@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace interfaces.Interfaces
+namespace WebShop.Interfaces
 {
 
     public interface IСatalog

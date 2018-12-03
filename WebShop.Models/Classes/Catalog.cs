@@ -1,11 +1,11 @@
 ﻿
-using interfaces.Interfaces;
+using WebShop.Interfaces;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace interfaces
+namespace WebShop
 {
     public class Catalog : IСatalog
     {
