@@ -13,18 +13,20 @@ namespace WebShop.Controllers
         {
             return View(new Product()
             {
-                Name = "Ibuprofen",
-                Price = 210
+                Id = 1,
+                Name = "Aspirin 2",
+                Price = 309,
+                URL = "https://Aspririn_2.com",
+                isEnabled = true,
+                Quantity = 20,
+                Description = "good medicine",
+                isActive = true,
             });
         }
 
-        public IActionResult addNewProduct()
+        public IActionResult add()
         {
-            return View(new Product()
-            {
-                Name = "Analgin",
-                Price = 11
-            });
+            return View();
         }
     }
 }
