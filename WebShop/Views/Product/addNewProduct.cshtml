@@ -1,27 +1,25 @@
-﻿@model WebShop.Catalog
+﻿@model WebShop.Classes.Product
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "addNewProduct";
 }
 
-<h2>Index</h2>
 
 <div>
-    <h4>Catalog</h4>
-    @foreach(var product in Model.ProductList){
-        <div class="product-list">
+    <h4>Product</h4>
+    @{
+        <div class="product-add">
             <a href="#">
                 <div class="product-block">
                     <div class="content">
                         <img src="flashDrive.jpg" />
                         <div calss="product-info">
-                            <h3>@product.Name</h3>
-                            <span>Price: @product.Price$</span>
+                            <h3>@Model.Name</h3>
+                            <span>Price: @Model.Price$</span>
                         </div>
                     </div>
                 </div>
             </a>
         </div>
-     }
+    }
 </div>
-
