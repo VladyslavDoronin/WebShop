@@ -1,6 +1,7 @@
 ﻿using WebShop.Interfaces;
 using System.Collections.Generic;
 
+
 namespace WebShop.Classes
 {
     class ProductPage : IProductPage

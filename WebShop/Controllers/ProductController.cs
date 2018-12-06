@@ -1,54 +1,44 @@
-﻿using System.Collections.Generic;
-using WebShop.Classes;
-using WebShop.Interfaces;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using WebShop.Classes;
+using WebShop.Models;
 
 namespace WebShop.Controllers
 {
     public class ProductController : Controller
     {
-        // GET: Product
-        public IActionResult Index()
+        ShopContext _db;
+
+        public ProductController(ShopContext context)
         {
-            return View(new Product()
-            {
-                Id = 1,
-                Name = "Spazmalgon",
-                Price = 10,
-                URL = "https://www.google.com.ua/search?q=spazmalgon&oq=spazmalgon",
-                isEnabled = true,
-                Quantity = 5,
-                Description = "Drink with headaches",
-                isActive = true ,
-                UpdatedBy = 1,
-
-            });
-
+            _db = context;
         }
 
-      
-        
+        public IActionResult Catalog()
+        {
+            return View(_db.Products.ToList());
+        }
+
+        public IActionResult Index(int id)
+        {
+            return View(_db.Products.Where(x => x.Id == id).FirstOrDefault());
+        }
+
         public IActionResult Add()
         {
             return View();
         }
 
-        public IActionResult Edit()
+        [HttpPost]
+        public IActionResult Add(Product product)
         {
-            return View(new Product()
-            {
-                Id = 1,
-                Name = "Spazmalgon",
-                Price = 10,
-                URL = "https://www.google.com.ua/search?q=spazmalgon&oq=spazmalgon",
-                isEnabled = true,
-                Quantity = 5,
-                Description = "Drink with headaches",
-                isActive = true,
-                UpdatedBy = 1,
+            _db.Products.Add(product);
+            _db.Products.Append(product);
 
-            });
+            return View();
         }
-
     }
 }

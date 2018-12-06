@@ -43,30 +43,30 @@ namespace WebShop.Classes
                     {
                         continue;
                     }
-                    if (filter.Key == "IsEnabled" && !product.isEnabled)
+                    if (filter.Key == "IsEnabled" && !product.IsEnabled)
                     {
                         continue;//не придёт к add
                     }
 
-                    if (filter.Key == "HasImages" && product.Pic.Count() <= 0) //если количество ссылок (элементов в списке) <=0 то не интересует
-                    {
-                        continue;//не придёт к add
-                    }
+                    //if (filter.Key == "HasImages" && product.Pic.Count() <= 0) //если количество ссылок (элементов в списке) <=0 то не интересует
+                    //{
+                    //    continue;//не придёт к add
+                    //}
 
-                    var filterFlag = true;
-                    foreach (var spec in product.Specifications)
-                    {
-                        if (filter.Key == spec.Key && filter.Value != spec.Value)
-                        {
-                            filterFlag = false;
-                            break;
-                        }
-                    }
+                    //var filterFlag = true;
+                    //foreach (var spec in product.Specifications)
+                    //{
+                    //    if (filter.Key == spec.Key && filter.Value != spec.Value)
+                    //    {
+                    //        filterFlag = false;
+                    //        break;
+                    //    }
+                    //}
 
-                    if (!filterFlag)
-                    {
-                        continue;
-                    }
+                    //if (!filterFlag)
+                    //{
+                    //    continue;
+                    //}
 
                     resultProductList.Add(product);
                 }
@@ -100,20 +100,20 @@ namespace WebShop.Classes
                     continue;
                 }
 
-                foreach (var spec in product.Specifications)
-                {
-                    if (spec.Key.IndexOf(Search) != -1)
-                    {
-                        resultProductList.Add(product);
-                        continue;
-                    }
+                //foreach (var spec in product.Specifications)
+                //{
+                //    if (spec.Key.IndexOf(Search) != -1)
+                //    {
+                //        resultProductList.Add(product);
+                //        continue;
+                //    }
 
-                    if (spec.Value.IndexOf(Search) != -1)
-                    {
-                        resultProductList.Add(product);
-                        continue;
-                    }
-                }
+                //    if (spec.Value.IndexOf(Search) != -1)
+                //    {
+                //        resultProductList.Add(product);
+                //        continue;
+                //    }
+                //}
             }
 
             ProductList = resultProductList;
