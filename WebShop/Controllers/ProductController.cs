@@ -4,28 +4,40 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using WebShop.Classes;
+using WebShop.Models;
 
 namespace WebShop.Controllers
 {
     public class ProductController : Controller
     {
-        public IActionResult Index()
+        ShopContext _db;
+
+        public ProductController(ShopContext context)
         {
-            return View(new Product()
-            {
-                Id = 1,
-                Name = "Aspirin 2",
-                Price = 309,
-                URL = "https://Aspririn_2.com",
-                isEnabled = true,
-                Quantity = 20,
-                Description = "good medicine",
-                isActive = true,
-            });
+            _db = context;
         }
 
-        public IActionResult add()
+        public IActionResult Catalog()
         {
+            return View(_db.Products.ToList());
+        }
+
+        public IActionResult Index(int id)
+        {
+            return View(_db.Products.Where(x => x.Id == id).FirstOrDefault());
+        }
+
+        public IActionResult Add()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Add(Product product)
+        {
+            _db.Products.Add(product);
+            _db.Products.Append(product);
+
             return View();
         }
     }
