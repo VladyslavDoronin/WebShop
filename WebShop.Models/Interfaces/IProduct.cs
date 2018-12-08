@@ -20,7 +20,5 @@ namespace WebShop.Interfaces
         DateTime UpdateDate { get; set; }
         int UpdatedBy { get; set; } //id сотрудника
 
-
-
     }
 }

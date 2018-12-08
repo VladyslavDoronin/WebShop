@@ -1,11 +1,10 @@
 ﻿
 using WebShop.Interfaces;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace WebShop
+namespace WebShop.Classes
 {
     public class Catalog : IСatalog
     {
@@ -84,40 +83,7 @@ namespace WebShop
         }
 
         void CatalogSearch()
-        {
-            //var resultProductList = new List<IProduct>();
-
-            //foreach (var product in ProductList)
-            //{
-            //    if (product.Name.IndexOf("Searchkey") < 0)
-            //    {
-            //        continue;
-            //    }
-
-            //    if (product.Description.IndexOf("Searchkey") < 0)
-            //    {
-            //        continue;
-            //    }
-
-
-            //    var FilterFlag = true;
-            //    foreach (var spec in product.Specifications)
-            //    {
-            //        if (spec.Value.IndexOf("Searchkey") < 0)
-            //        {
-            //            FilterFlag = false;
-            //            break;
-            //        }
-            //    }
-
-            //    if (!FilterFlag)
-            //    {
-            //        continue;
-            //    }
-
-            //    ProductList = resultProductList;
-
-            //}
+        { 
 
             var resultProductList = new List<IProduct>();
             foreach (var product in ProductList)

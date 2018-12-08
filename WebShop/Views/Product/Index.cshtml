@@ -1,4 +1,4 @@
-﻿@model WebShop.Classes.Product 
+﻿@model WebShop.Classes.Product
 
 @{
     ViewData["Title"] = "Index";
@@ -8,7 +8,6 @@
 
 <div>
     <h4>Product</h4>
-    <img src="~/images/Aspirin.jpeg" />
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -78,4 +77,8 @@
             @Html.DisplayFor(model => model.UpdatedBy)
         </dd>
     </dl>
+</div>
+<div>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    <a asp-action="Index">Back to List</a>
 </div>
