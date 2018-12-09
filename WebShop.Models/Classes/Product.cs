@@ -20,8 +20,8 @@ namespace WebShop.Classes
         public DateTime UpdateDate { get; set; }
         public int UpdatedBy { get; set; }
 
-        public ICollection<Image> Images { get; set; }
-        public ICollection<Specification> Specifications { get; set; }
-        public ICollection<PaymentMethod> PaymentMethods { get; set; }
+        public virtual ICollection<Image> Images { get; set; }
+        public virtual ICollection <PaymentMethod> PaymentMethods { get; set; }
+        public virtual ICollection <Specification> Specifications { get; set; }
     }
 }
