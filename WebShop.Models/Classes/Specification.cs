@@ -1,16 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using WebShop.Classes;
+﻿using WebShop.Classes;
 
 namespace WebShop.Models.Classes
 {
-    class Specifications
+    public class Specification
     {
         public int Id { get; set; }
         public int ProductId { get; set; }
-        public virtual Product Products { get; set; }
         public string Name { get; set; }
         public string  Description { get; set; }
+
+        public virtual Product Products { get; set; }
+
     }
 }
