@@ -11,6 +11,7 @@ namespace WebShop.Models.Classes
         public int ProductId { get; set; }
         public string Name { get; set; }
         public string Url { get; set; }
+        public virtual Product Products { get; set; }
         
 
     }
