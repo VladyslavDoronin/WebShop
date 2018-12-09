@@ -1,6 +1,7 @@
 ﻿using WebShop.Interfaces;
 using System;
-
+using WebShop.Models.Classes;
+using System.Collections.Generic;
 
 namespace WebShop.Classes
 {
@@ -18,5 +19,9 @@ namespace WebShop.Classes
         public DateTime CreateDate { get; set; }
         public DateTime UpdateDate { get; set; }
         public int UpdatedBy { get; set; }
+
+        public virtual ICollection<Image> Images { get; set; }
+        public virtual ICollection <PaymentMethod> PaymentMethods { get; set; }
+        public virtual ICollection <Specification> Specifications { get; set; }
     }
 }
