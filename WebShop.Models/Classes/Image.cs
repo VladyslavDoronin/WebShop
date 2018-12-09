@@ -1,4 +1,7 @@
-﻿using WebShop.Classes;
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+using WebShop.Classes;
 
 namespace WebShop.Models.Classes
 {
@@ -9,6 +12,7 @@ namespace WebShop.Models.Classes
         public string Name { get; set; }
         public string Url { get; set; }
         public virtual Product Products { get; set; }
+        
 
     }
 }

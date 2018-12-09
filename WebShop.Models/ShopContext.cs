@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata;
 using WebShop.Classes;
 using WebShop.Models.Classes;
 
@@ -19,40 +18,27 @@ namespace WebShop.Models
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Product>(
-                entity =>
-                {
-                    entity.Property(e => e.UpdateDate)
-                    .IsRequired(false);
-                }    
-            );
-
             modelBuilder.Entity<Image>(
                 entity =>
                 {
-                    entity.HasOne(d => d.Products)
-                    .WithMany(p => p.Images)
-                    .HasForeignKey(d => d.ProductId);
+                    entity.HasOne(d => d.Products).WithMany(p => p.Images).HasForeignKey(d => d.ProductId);
                 }
-            );
+                );
 
             modelBuilder.Entity<Specification>(
                 entity =>
                 {
-                    entity.HasOne(d => d.Products)
-                    .WithMany(p => p.Specifications)
-                    .HasForeignKey(d => d.ProductId);
+                    entity.HasOne(d => d.Products).WithMany(p => p.Specifications).HasForeignKey(d => d.ProductId);
                 }
-            );
+                );
 
             modelBuilder.Entity<PaymentMethod>(
                 entity =>
                 {
-                    entity.HasOne(d => d.Products)
-                    .WithMany(p => p.PaymentMethods)
-                    .HasForeignKey(d => d.ProductId);
+                    entity.HasOne(d => d.Products).WithMany(p => p.PaymentMethods).HasForeignKey(d => d.ProductId);
                 }
-            );
+                );
+
         }
     }
 }
