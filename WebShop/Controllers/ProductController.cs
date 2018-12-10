@@ -20,7 +20,7 @@ namespace WebShop.Controllers
 
         public IActionResult Catalog()
         {
-            return View(_db.Products.ToList());
+            return View(_db.Products.Where(x=>x.IsActive==true).ToList());
         }
 
         public IActionResult Index(int id)
@@ -46,6 +46,57 @@ namespace WebShop.Controllers
         public IActionResult Add(Product product)
         {
             _db.Products.Add(product);
+            _db.SaveChanges();
+
+            return View();
+        }
+
+        [HttpGet]
+        public IActionResult Delete(int id)
+        {
+            var prod = _db.Products.Include(x => x.Images)
+                .Include(x => x.PaymentMethods)
+                .Include(x => x.Specifications)
+                .Where(x => x.Id == id).FirstOrDefault();
+            if (prod != null)
+            {
+                var img = prod.Images.FirstOrDefault();
+            }
+
+            return View(_db.Products.Where(x => x.Id == id).FirstOrDefault());
+        }
+
+        [HttpPost]
+        public string Delete(Product product)
+        {
+            _db.Products.Remove(product);
+            _db.SaveChanges();
+
+            return "Deleted!";
+
+        }
+
+
+        [HttpGet]
+        public IActionResult Edit(int id)
+        {
+            var prod = _db.Products.Include(x => x.Images)
+                .Include(x => x.PaymentMethods)
+                .Include(x => x.Specifications)
+                .Where(x => x.Id == id).FirstOrDefault();
+            if (prod != null)
+            {
+                var img = prod.Images.FirstOrDefault();
+            }
+
+            return View(_db.Products.Where(x => x.Id == id).FirstOrDefault());
+
+        }
+
+        [HttpPost]
+        public IActionResult Edit(Product product)
+        {
+            _db.Products.Update(product);
             _db.SaveChanges();
 
             return View();

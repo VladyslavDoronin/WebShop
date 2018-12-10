@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using WebShop;
+﻿using System.Collections.Generic;
 using WebShop.Classes;
 using WebShop.Interfaces;
 using Microsoft.AspNetCore.Mvc;
@@ -22,6 +18,16 @@ namespace WebShop.Controllers
                 }
 
             });
+        }
+
+        public IActionResult Products()
+        {
+            return View();
+        }
+
+        public IActionResult Products(string url)
+        {
+            return View();
         }
     }
 }

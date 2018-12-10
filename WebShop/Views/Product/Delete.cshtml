@@ -1,11 +1,12 @@
 ﻿@model WebShop.Classes.Product
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Delete";
 }
 
-<h2>Index</h2>
+<h2>Delete</h2>
 
+<h3>Are you sure you want to delete this?</h3>
 <div>
     <h4>Product</h4>
     <hr />
@@ -53,24 +54,6 @@
             @Html.DisplayFor(model => model.IsActive)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.Images)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Images)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.PaymentMethods)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.PaymentMethods)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Specifications)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Specifications)
-        </dd>
-        <dt>
             @Html.DisplayNameFor(model => model.CreateDate)
         </dt>
         <dd>
@@ -89,8 +72,9 @@
             @Html.DisplayFor(model => model.UpdatedBy)
         </dd>
     </dl>
-</div>
-<div>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    <a asp-action="Catalog">Back to List</a>
+    
+    <form asp-action="Delete">
+        <input type="submit" value="Delete" class="btn btn-default" /> |
+        <a asp-action="Catalog">No! Back to List</a>
+    </form>
 </div>
