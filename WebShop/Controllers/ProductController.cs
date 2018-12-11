@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using WebShop.Classes;
@@ -18,25 +15,6 @@ namespace WebShop.Controllers
             _db = context;
         }
 
-        public IActionResult Catalog()
-        {
-            return View(_db.Products.ToList());
-        }
-
-        public IActionResult Index(int id)
-        {
-            var prod = _db.Products.Include(x => x.Images)
-                .Include(x => x.PaymentMethods)
-                .Include(x => x.Specifications)
-                .Where(x=>x.Id == id).FirstOrDefault();
-            if(prod != null)
-            {
-                var img = prod.Images.FirstOrDefault();
-            }
-            
-            return View(_db.Products.Where(x => x.Id == id).FirstOrDefault());
-        }
-
         public IActionResult Add()
         {
             return View();
@@ -48,7 +26,36 @@ namespace WebShop.Controllers
             _db.Products.Add(product);
             _db.SaveChanges();
 
-            return View();
+            return RedirectToAction("Index", "Catalog");
+        }
+
+        public IActionResult Delete(int id)
+        {
+            _db.Products.Remove(_db.Products.Where(x => x.Id == id).FirstOrDefault());
+            _db.SaveChanges();
+
+            return RedirectToAction("Index", "Catalog");
+
+        }
+
+        public IActionResult Edit(string url, int id)
+        {
+            var prod = _db.Products.Include(x => x.Images)
+                .Include(x => x.PaymentMethods)
+                .Include(x => x.Specifications)
+                .Where(x => x.URL == url && x.Id == id).FirstOrDefault();
+
+            return View(prod);
+
+        }
+
+        [HttpPost]
+        public IActionResult Edit(Product product)
+        {
+            _db.Products.Update(product);
+            _db.SaveChanges();
+
+            return View(product);
         }
     }
 }

@@ -1,27 +1,38 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using WebShop;
-using WebShop.Classes;
-using WebShop.Interfaces;
+﻿using System.Linq;
 using Microsoft.AspNetCore.Mvc;
+using WebShop.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace WebShop.Controllers
 {
     public class CatalogController : Controller
     {
+        ShopContext _db;
+
+        public CatalogController(ShopContext context)
+        {
+            _db = context;
+        }
+
         public IActionResult Index()
         {
-            return View(new Catalog() {
-                ProductList = new List<IProduct>()
-                { new Product()
-                { Name = "Aspirin", Price = 3},
-                new Product()
-                { Name = "Aspirin 2", Price = 309}
-                }
+            var prods = _db.Products.Include(x => x.Images)
+                .Include(x => x.PaymentMethods)
+                .Include(x => x.Specifications)
+                .Where(x => x.IsActive == true).ToList();
 
-            });
+            return View(prods);
+        }
+
+
+        public IActionResult Products(string url)
+        {
+            var prod = _db.Products.Include(x => x.Images)
+                .Include(x => x.PaymentMethods)
+                .Include(x => x.Specifications)
+                .Where(x => x.URL == url && x.IsActive == true).FirstOrDefault();
+
+            return View(prod);
         }
     }
 }
