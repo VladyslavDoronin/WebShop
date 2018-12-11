@@ -60,7 +60,7 @@ namespace WebShop
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Product}/{action=Catalog}/{id?}");
+                    template: "{controller=Catalog}/{action=Index}/{id?}");
             });
         }
     }
