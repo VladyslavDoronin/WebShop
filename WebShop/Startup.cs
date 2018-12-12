@@ -34,7 +34,7 @@ namespace WebShop
             });
 
             string connection = Configuration.GetConnectionString("DefaultConnection");
-            services.AddDbContext<ShopContext>(options => options.UseSqlServer(connection));
+            services.AddDbContext<ShopContext>(options => options.UseSqlServer(connection, b=>b.MigrationsAssembly("WebShop")));
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
